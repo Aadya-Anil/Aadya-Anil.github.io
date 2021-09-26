@@ -11,4 +11,4 @@ Hi, I'm **Aadya Anil Kumar** 2nd year **B.Tech Computer Science Engineering** St
   ## My Mission
   > Learn from Communties and Actively Contribute to the society
 
-Please Checkout my instagram : www.instagram.com/aadya_anil.com
+Please Checkout my Linkedin : linkedin.com/in/aadya-anil-kumar-917b671b1/
