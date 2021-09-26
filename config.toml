@@ -16,9 +16,9 @@ author = "Aadya Anil Kumar"
 description = "Aadya's personal website"
 keywords = "blog,developer,personal"
 info = ["Tinkerhub WIT Community","Content Lead @ GDSC GECT"]
-avatarURL = "images/avatar.jpg"
+avatarURL = "images/avatar.jpeg"
 #gravatar = "john.doe@example.com"
-footerContent = "More Details @ Instagram"
+footerContent = "More Details @ Linkedin"
 dateFormat = "October 26, 2000"
 hideFooter = false
 hideCredits = false
@@ -115,7 +115,7 @@ url = "https://instagram.com/aadya_anil/"
 name = "LinkedIn"
 icon = "fa fa-linkedin"
 weight = 4
-url = "https://www.linkedin.com/in/aadya-anil-kumar/"
+url = "https://www.linkedin.com/in/aadya-anil-kumar-917b671b1/"
 
 [languages.en]
 languageName = ":uk:"
