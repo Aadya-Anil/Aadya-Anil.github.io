@@ -28,6 +28,6 @@ jobs:
           external_repository: ${{ secrets.USERNAME }}/${{ secrets.USERNAME }}.github.io
           publish_dir: ./public
           user_name: ${{ secrets.USERNAME }}
-          user_email: ${{ secrets.TOKEN }}
+          user_email: ${{ secrets.MAIL }}
           publish_branch: gh-pages
         #   cname: example.com
