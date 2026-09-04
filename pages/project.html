@@ -1,333 +1,732 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | Aadya Anil Kumar</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Projects — Aadya Anil Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-body {
-  font-family: 'Inter', sans-serif;
-  scroll-behavior: smooth;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--surface:#f4f6f9;--card:#ffffff;--border:#e2e6ed;
+  --navy:#0f2557;--navy-mid:#1d3a8a;--navy-dim:rgba(15,37,87,.07);
+  --gray-dk:#1f2937;--gray-md:#4b5563;--gray-lt:#9ca3af;
+  --text:#111827;--muted:#4b5563;
+  --display:'Playfair Display',serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
 }
-.gradient-bg {
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-}
-.project-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-.nav-link {
-  position: relative;
-}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  background-color: #4F46E5;
-  transition: width 0.3s ease;
-}
-.nav-link:hover::after { width: 100%; }
-.active::after { width: 100%; }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--surface)}
+::-webkit-scrollbar-thumb{background:var(--navy);border-radius:3px}
 
-/* Filter buttons */
-.filter-btn {
-  transition: all 0.3s ease;
-}
-.filter-btn.active {
-  background-color: #4F46E5;
-  color: white;
-  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
-}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5rem;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--navy);font-style:italic;text-decoration:none}
+.nav-back{font-family:var(--body);font-size:.82rem;font-weight:500;color:var(--gray-md);text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.nav-back:hover{color:var(--navy)}
+.nav-cta{padding:.52rem 1.4rem;background:var(--navy);color:#fff;font-family:var(--body);font-size:.82rem;font-weight:600;border-radius:4px;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.88}
 
-/* Card enter animation */
-.project-card {
-  opacity: 0;
-  animation: fadeUp 0.5s ease forwards;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.project-card.hide {
-  display: none;
-}
+/* PAGE HERO */
+.page-hero{padding:9rem 5rem 4rem;background:var(--surface);border-bottom:1px solid var(--border)}
+.page-hero-inner{max-width:1200px;margin:0 auto}
+.ph-label{font-family:var(--mono);font-size:.72rem;color:var(--navy);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem;opacity:.8}
+.ph-title{font-family:var(--display);font-size:clamp(3rem,6vw,5.5rem);font-weight:900;color:var(--text);letter-spacing:-.03em;line-height:1.05;margin-bottom:1rem}
+.ph-title em{font-style:italic;color:var(--navy)}
+.ph-sub{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.8}
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #555; }
+/* CONTROLS */
+.controls{padding:2rem 5rem;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:73px;z-index:100}
+.controls-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.filter-tabs{display:flex;gap:.5rem;flex-wrap:wrap}
+.filter-btn{font-family:var(--mono);font-size:.7rem;padding:.42rem 1rem;border:1px solid var(--border);border-radius:4px;background:#fff;color:var(--gray-md);cursor:pointer;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;font-weight:500}
+.filter-btn:hover{border-color:var(--navy);color:var(--navy)}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.search-wrap{position:relative}
+.search-wrap input{font-family:var(--mono);font-size:.78rem;padding:.45rem 1rem .45rem 2.2rem;border:1px solid var(--border);border-radius:4px;outline:none;color:var(--text);width:220px;transition:border-color .2s;background:#fff}
+.search-wrap input:focus{border-color:var(--navy)}
+.search-wrap input::placeholder{color:var(--gray-lt)}
+.search-icon{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);font-size:.75rem;color:var(--gray-lt)}
+.results-count{font-family:var(--mono);font-size:.68rem;color:var(--gray-lt);letter-spacing:.06em;white-space:nowrap}
+
+/* GRID */
+.projects-section{padding:3rem 5rem 6rem;max-width:1200px;margin:0 auto}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+
+/* TILE */
+.tile{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .25s,transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.tile:hover{border-color:var(--navy);transform:translateY(-4px);box-shadow:0 12px 32px rgba(15,37,87,.1)}
+.tile.hidden{display:none}
+.tile-visual{height:160px;background:var(--surface);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.tile-visual svg{width:100%;height:100%}
+.tile-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.tile-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.8rem}
+.tbadge{font-family:var(--mono);font-size:.6rem;padding:.18rem .55rem;border-radius:3px;border:1px solid;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.b-de  {color:#1e3a5f;border-color:rgba(30,58,95,.25);background:rgba(30,58,95,.06)}
+.b-ml  {color:#5b21b6;border-color:rgba(91,33,182,.25);background:rgba(91,33,182,.06)}
+.b-web {color:#065f46;border-color:rgba(6,95,70,.25);background:rgba(6,95,70,.06)}
+.b-cloud{color:#92400e;border-color:rgba(146,64,14,.25);background:rgba(146,64,14,.06)}
+.b-devsec{color:#991b1b;border-color:rgba(153,27,27,.25);background:rgba(153,27,27,.06)}
+.b-feat{color:var(--navy);border-color:rgba(15,37,87,.3);background:var(--navy-dim)}
+.b-beginner{color:#374151;border-color:rgba(55,65,81,.2);background:rgba(55,65,81,.05)}
+.tile-title{font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.45rem;line-height:1.25}
+.tile-desc{font-size:.84rem;color:var(--muted);line-height:1.7;flex:1;margin-bottom:1rem}
+.tile-stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
+.tstack{font-family:var(--mono);font-size:.62rem;padding:.18rem .48rem;border-radius:3px;background:var(--surface);border:1px solid var(--border);color:var(--gray-md)}
+.tile-hint{font-family:var(--body);font-size:.78rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:.3rem;margin-top:auto}
+
+/* NO RESULTS */
+.no-results{display:none;text-align:center;padding:5rem 2rem;grid-column:1/-1}
+.no-results.show{display:block}
+.no-results h3{font-family:var(--display);font-size:1.8rem;color:var(--gray-lt);margin-bottom:.5rem}
+.no-results p{font-family:var(--mono);font-size:.75rem;color:var(--gray-lt)}
+
+/* SIDE PANEL */
+.panel-overlay{position:fixed;inset:0;background:rgba(17,24,39,.35);z-index:499;opacity:0;pointer-events:none;transition:opacity .35s;backdrop-filter:blur(4px)}
+.panel-overlay.open{opacity:1;pointer-events:all}
+#side-panel{position:fixed;top:0;right:-580px;width:560px;max-width:96vw;height:100vh;background:#fff;border-left:1px solid var(--border);z-index:500;transition:right .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:2.5rem 2.4rem 3rem;box-shadow:-12px 0 40px rgba(15,37,87,.08)}
+#side-panel.open{right:0}
+.panel-close-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;position:sticky;top:0;background:#fff;padding:.5rem 0;z-index:10;border-bottom:1px solid var(--border);padding-bottom:1rem}
+.panel-close-btn{width:38px;height:38px;border:1px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--gray-md);transition:border-color .2s,color .2s}
+.panel-close-btn:hover{border-color:var(--navy);color:var(--navy)}
+.panel-gh-link{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.7rem;color:var(--navy);text-decoration:none;border:1px solid rgba(15,37,87,.25);padding:.38rem .9rem;border-radius:4px;transition:background .2s,color .2s;font-weight:500}
+.panel-gh-link:hover{background:var(--navy);color:#fff}
+.panel-visual{width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--border);margin-bottom:2rem;background:var(--surface)}
+.panel-visual svg{width:100%;display:block}
+.panel-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.panel-title{font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--text);margin-bottom:.4rem;line-height:1.1;letter-spacing:-.02em}
+.panel-sub{font-family:var(--mono);font-size:.72rem;color:var(--gray-lt);margin-bottom:1.8rem;letter-spacing:.04em}
+.panel-desc{font-size:.96rem;color:var(--muted);line-height:1.85;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.panel-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:2rem}
+.ps{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
+.ps-num{font-family:var(--display);font-size:1.7rem;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-.02em}
+.ps-label{font-family:var(--body);font-size:.68rem;color:var(--gray-lt);margin-top:.35rem;font-weight:500;line-height:1.4}
+.panel-section-label{font-family:var(--body);font-size:.72rem;font-weight:700;color:var(--navy);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;margin-top:1.8rem}
+.panel-bullets{list-style:none;margin-bottom:1.5rem}
+.panel-bullets li{font-size:.9rem;color:var(--muted);padding-left:1.2rem;position:relative;margin-bottom:.55rem;line-height:1.75}
+.panel-bullets li::before{content:'–';position:absolute;left:0;color:var(--navy);font-weight:700}
+.panel-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:2rem}
+.ppill{font-family:var(--mono);font-size:.7rem;padding:.28rem .65rem;border-radius:3px;background:var(--navy-dim);border:1px solid rgba(15,37,87,.15);color:var(--navy);font-weight:500}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);background:var(--navy)}
+footer p{font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.35);letter-spacing:.05em}
+footer em{color:rgba(255,255,255,.6);font-style:normal}
+footer a{color:rgba(255,255,255,.5);text-decoration:none}
+footer a:hover{color:#fff}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav,.controls{padding:1rem 1.5rem}
+  .page-hero{padding:8rem 1.5rem 3rem}
+  .projects-section{padding:2rem 1.5rem 4rem}
+  .projects-grid{grid-template-columns:1fr}
+  #side-panel{width:100vw}
+  .controls-inner{flex-direction:column;align-items:flex-start}
+}
 </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
 
-<!-- Navigation -->
-<nav class="fixed w-full bg-white shadow-sm z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
-      <div class="flex items-center">
-        <a href="../index.html" class="text-xl font-bold text-indigo-600">Aadya Anil Kumar</a>
-      </div>
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="../index.html#home" class="nav-link text-gray-900 hover:text-indigo-600">Home</a>
-        <a href="../index.html#about" class="nav-link text-gray-900 hover:text-indigo-600">About</a>
-        <a href="../index.html#projects" class="nav-link active text-gray-900 hover:text-indigo-600">Projects</a>
-        <a href="../index.html#skills" class="nav-link text-gray-900 hover:text-indigo-600">Skills</a>
-        <a href="../index.html#contact" class="nav-link text-gray-900 hover:text-indigo-600">Contact</a>
-      </div>
-      <div class="md:hidden flex items-center">
-        <button id="menu-btn" class="text-gray-500 hover:text-indigo-600 focus:outline-none">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-      <a href="../index.html#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Home</a>
-      <a href="../index.html#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">About</a>
-      <a href="../index.html#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Projects</a>
-      <a href="../index.html#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Skills</a>
-      <a href="../index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Contact</a>
-    </div>
-  </div>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Aadya Anil Kumar</a>
+  <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  <a href="mailto:off.aadyaanil@gmail.com" class="nav-cta">Hire Me</a>
 </nav>
 
-<!-- Page header -->
-<header class="pt-32 pb-16 gradient-bg text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <a href="../index.html#projects" class="text-blue-200 hover:text-white text-sm font-medium inline-flex items-center mb-4">
-      <i class="fas fa-arrow-left mr-2"></i> Back to home
-    </a>
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">All Projects</h1>
-    <p class="text-lg text-blue-100 max-w-2xl">A complete look at what I've built and explored --  machine learning, infrastructure, and data work.</p>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="ph-label">// selected work</div>
+    <h1 class="ph-title">All <em>Projects</em></h1>
+    <p class="ph-sub">11 projects spanning data engineering, machine learning, AI, DevSecOps, and web development. Click any tile to explore the details.</p>
+  </div>
+</div>
 
-    <!-- Quick stats -->
-    <div class="flex flex-wrap gap-8 mt-8">
-      <div>
-        <p class="text-3xl font-bold text-teal-300" id="stat-total">0</p>
-        <p class="text-sm text-blue-200">Projects</p>
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="controls-inner">
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filter('all',this)">All <span id="count-all"></span></button>
+      <button class="filter-btn" onclick="filter('de',this)">Data Engineering</button>
+      <button class="filter-btn" onclick="filter('ml',this)">ML & AI</button>
+      <button class="filter-btn" onclick="filter('web',this)">Web & DevSecOps</button>
+      <button class="filter-btn" onclick="filter('cloud',this)">Cloud</button>
+      <button class="filter-btn" onclick="filter('feat',this)">⭐ Featured</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search projects..." oninput="doSearch()"/>
       </div>
-      <div>
-        <p class="text-3xl font-bold text-teal-300">3</p>
-        <p class="text-sm text-blue-200">Cloud Certifications</p>
-      </div>
-      <div>
-        <p class="text-3xl font-bold text-teal-300">Vienna University of Technology</p>
-        <p class="text-sm text-blue-200">Current Role: Student</p>
-      </div>
+      <span class="results-count" id="results-count"></span>
     </div>
   </div>
-</header>
+</div>
 
-<!-- Filter + Grid -->
-<section class="py-16 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- GRID -->
+<div class="projects-section">
+  <div class="projects-grid" id="grid">
 
-    <!-- Filter buttons -->
-    <div class="flex flex-wrap gap-3 mb-12" id="filter-bar">
-      <button class="filter-btn active px-5 py-2 rounded-full font-medium text-sm bg-gray-200 text-gray-800" data-filter="all">
-        All
-      </button>
-      <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm bg-gray-200 text-gray-800" data-filter="ml-ai">
-        <i class="fas fa-brain mr-1"></i> ML / AI
-      </button>
-      <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm bg-gray-200 text-gray-800" data-filter="web">
-        <i class="fas fa-globe mr-1"></i> Web
-      </button>
-      <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm bg-gray-200 text-gray-800" data-filter="data">
-        <i class="fas fa-database mr-1"></i> Data
-      </button>
-      <button class="filter-btn px-5 py-2 rounded-full font-medium text-sm bg-gray-200 text-gray-800" data-filter="infra">
-        <i class="fas fa-server mr-1"></i> Infra / Cloud
-      </button>
-    </div>
-
-    <!-- Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
-
-      <!-- Project 1 -->
-      <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-md" data-category="ml-ai data">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=765&q=80" alt="SAP System Log Anomaly Detector" class="w-full h-full object-cover">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-white">SAP System Log Anomaly Detector</h3>
-            <span class="text-xs px-2 py-1 bg-indigo-900 text-indigo-300 rounded-full whitespace-nowrap">ML/AI</span>
-          </div>
-          <p class="text-gray-300 mb-4">AI-powered solution detecting anomalies in SAP system logs using unsupervised learning techniques.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">Python</span>
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">SAP</span>
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">Isolation Forest</span>
-          </div>
-          <a href="https://diabetes-detectiongit-gufzkcap94z5vz5hgptfmq.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-teal-400 font-medium hover:text-teal-300 flex items-center">
-            View Project <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
+    <!-- 1. InTrainer -->
+    <div class="tile" data-tags="ml web feat" onclick="openPanel('intrainer')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="20" y="50" width="72" height="60" rx="6" fill="white" stroke="#e2e6ed" stroke-width="1"/>
+          <text x="56" y="76" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#0f2557">AUDIO</text>
+          <text x="56" y="90" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">Whisper</text>
+          <line x1="92" y1="80" x2="120" y2="80" stroke="#0f2557" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="120" y="50" width="72" height="60" rx="6" fill="white" stroke="#e2e6ed" stroke-width="1"/>
+          <text x="156" y="76" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#0f2557">VIDEO</text>
+          <text x="156" y="90" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">CNN-LSTM</text>
+          <line x1="192" y1="80" x2="220" y2="80" stroke="#0f2557" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="220" y="50" width="72" height="60" rx="6" fill="white" stroke="#e2e6ed" stroke-width="1"/>
+          <text x="256" y="76" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#0f2557">POSTURE</text>
+          <text x="256" y="90" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">Xception</text>
+          <line x1="292" y1="80" x2="320" y2="80" stroke="#0f2557" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="320" y="55" width="62" height="50" rx="6" fill="#0f2557" stroke="none"/>
+          <text x="351" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="white">FEED</text>
+          <text x="351" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="rgba(255,255,255,.6)">BACK</text>
+          <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#0f2557"/></marker></defs>
+          <text x="200" y="140" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">REAL-TIME AI INTERVIEW FEEDBACK</text>
+        </svg>
       </div>
-
-      <!-- Project 2 -->
-      <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-md" data-category="infra">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="AWS EC2 + ROS Noetic Deployment" class="w-full h-full object-cover">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-white">AWS EC2 + ROS Noetic Deployment</h3>
-            <span class="text-xs px-2 py-1 bg-indigo-900 text-indigo-300 rounded-full whitespace-nowrap">Infra</span>
-          </div>
-          <p class="text-gray-300 mb-4">Deployed ROS Noetic on AWS EC2 instances for robotic simulation environments.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">AWS</span>
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">ROS</span>
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">Linux</span>
-          </div>
-          <a href="#" class="text-teal-400 font-medium hover:text-teal-300 flex items-center">
-            View Project <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-md" data-category="ml-ai data">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Titanic Kaggle Competition" class="w-full h-full object-cover">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-white">Titanic Kaggle Competition</h3>
-            <span class="text-xs px-2 py-1 bg-indigo-900 text-indigo-300 rounded-full whitespace-nowrap">ML/AI</span>
-          </div>
-          <p class="text-gray-300 mb-4">Predicting survival on the Titanic with current score of 0.77272 (goal: 0.85).</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">Python</span>
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">Pandas</span>
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">Scikit-learn</span>
-          </div>
-          <a href="#" class="text-teal-400 font-medium hover:text-teal-300 flex items-center">
-            View Project <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Project 4: Portfolio website itself -->
-      <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-md" data-category="web">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Personal Portfolio Website" class="w-full h-full object-cover">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-white">Personal Portfolio Website</h3>
-            <span class="text-xs px-2 py-1 bg-indigo-900 text-indigo-300 rounded-full whitespace-nowrap">Web</span>
-          </div>
-          <p class="text-gray-300 mb-4">This site — a responsive, single-page portfolio built with Tailwind CSS and vanilla JS.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">HTML</span>
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">Tailwind CSS</span>
-            <span class="text-xs px-2 py-1 bg-teal-900 text-teal-300 rounded-full">JavaScript</span>
-          </div>
-          <a href="https://github.com/Aadya-Anil/Portfolio" target="_blank" rel="noopener noreferrer" class="text-teal-400 font-medium hover:text-teal-300 flex items-center">
-            View on GitHub <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Empty state (shown via JS when a filter has no matches) -->
-    <div id="empty-state" class="hidden text-center py-20">
-      <i class="fas fa-folder-open text-4xl text-gray-300 mb-4"></i>
-      <p class="text-gray-500">No projects in this category yet — check back soon.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="py-16 bg-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Want to see more, or work together?</h2>
-    <p class="text-gray-600 mb-8">My GitHub has the full source for everything above, and I'm always open to new opportunities.</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="https://github.com/Aadya-Anil" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition duration-300 flex items-center">
-        <i class="fab fa-github mr-2"></i> View GitHub
-      </a>
-      <a href="../index.html#contact" class="px-6 py-3 border border-indigo-600 text-indigo-600 font-medium rounded-lg hover:bg-indigo-600 hover:text-white transition duration-300">
-        Get In Touch
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-8 bg-gray-900 text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row justify-between items-center">
-      <div class="mb-4 md:mb-0">
-        <span class="text-xl font-bold text-indigo-400">Aadya Anil Kumar</span>
-        <p class="text-gray-400 mt-1">Machine Learning Software Engineer</p>
-      </div>
-      <div class="flex space-x-6">
-        <a href="../index.html#home" class="text-gray-400 hover:text-white transition duration-300">Home</a>
-        <a href="../index.html#about" class="text-gray-400 hover:text-white transition duration-300">About</a>
-        <a href="../index.html#projects" class="text-gray-400 hover:text-white transition duration-300">Projects</a>
-        <a href="../index.html#skills" class="text-gray-400 hover:text-white transition duration-300">Skills</a>
-        <a href="../index.html#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-ml">ML & AI</span><span class="tbadge b-web">Web</span><span class="tbadge b-feat">⭐ Featured</span></div>
+        <div class="tile-title">InTrainer — AI Interview Coach</div>
+        <div class="tile-desc">Real-time feedback on speech, facial expressions, and posture during mock interviews. Uses Whisper for transcription, CNN-LSTM for expression analysis, Xception for posture.</div>
+        <div class="tile-stack"><span class="tstack">OpenAI Whisper</span><span class="tstack">CNN-LSTM</span><span class="tstack">Xception</span><span class="tstack">Python</span></div>
+        <div class="tile-hint">Explore →</div>
       </div>
     </div>
-    <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-      <p>&copy; 2026 Aadya Anil Kumar. All rights reserved.</p>
+
+    <!-- 2. Fraud Pipeline -->
+    <div class="tile" data-tags="de cloud feat" onclick="openPanel('fraud')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="12" y="55" width="58" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+          <text x="41" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">7 RAW</text>
+          <text x="41" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">datasets</text>
+          <line x1="70" y1="80" x2="94" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a2)"/>
+          <rect x="94" y="55" width="60" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+          <text x="124" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">CLEAN</text>
+          <text x="124" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">tz-aware</text>
+          <line x1="154" y1="80" x2="178" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a2)"/>
+          <rect x="178" y="55" width="60" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+          <text x="208" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">DETECT</text>
+          <text x="208" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">fraud logic</text>
+          <line x1="238" y1="80" x2="262" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a2)"/>
+          <rect x="262" y="55" width="58" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+          <text x="291" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">DOCKER</text>
+          <text x="291" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">container</text>
+          <line x1="320" y1="80" x2="344" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a2)"/>
+          <rect x="344" y="55" width="50" height="50" rx="5" fill="#0f2557"/>
+          <text x="369" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="white">KPI</text>
+          <text x="369" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="rgba(255,255,255,.6)">Vercel</text>
+          <circle cx="369" cy="45" r="4" fill="#4ade80"><animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></circle>
+          <text x="360" y="46" text-anchor="end" font-family="JetBrains Mono" font-size="6" fill="#9ca3af">LIVE</text>
+          <defs><marker id="a2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#1d3a8a"/></marker></defs>
+          <text x="200" y="140" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">END-TO-END FINTECH FRAUD PIPELINE</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-de">Data Engineering</span><span class="tbadge b-cloud">Cloud</span><span class="tbadge b-feat">⭐ Featured</span></div>
+        <div class="tile-title">Referral Fraud Detection Pipeline</div>
+        <div class="tile-desc">End-to-end data pipeline for a fintech referral rewards system. 7 datasets, timezone-aware cleaning, fraud logic, Docker containerized, live KPI dashboard on Vercel.</div>
+        <div class="tile-stack"><span class="tstack">Python</span><span class="tstack">Pandas</span><span class="tstack">Docker</span><span class="tstack">Vercel</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
     </div>
-  </div>
+
+    <!-- 3. CodeGuard -->
+    <div class="tile" data-tags="web devsec feat" onclick="openPanel('codeguard')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="20" y="55" width="65" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+          <text x="52" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">GIT</text>
+          <text x="52" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">git push</text>
+          <line x1="85" y1="80" x2="112" y2="80" stroke="#991b1b" stroke-width="1.5" marker-end="url(#a3)"/>
+          <rect x="112" y="55" width="72" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+          <text x="148" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">WEBHOOK</text>
+          <text x="148" y="89" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">GitHub</text>
+          <text x="148" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">Actions</text>
+          <line x1="184" y1="80" x2="212" y2="80" stroke="#991b1b" stroke-width="1.5" marker-end="url(#a3)"/>
+          <rect x="212" y="55" width="76" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+          <text x="250" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">SCAN</text>
+          <text x="250" y="89" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">Sonar</text>
+          <text x="250" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">Cloud</text>
+          <line x1="288" y1="80" x2="316" y2="80" stroke="#991b1b" stroke-width="1.5" marker-end="url(#a3)"/>
+          <rect x="316" y="55" width="68" height="50" rx="5" fill="#0f2557"/>
+          <text x="350" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="white">ALERT</text>
+          <text x="350" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="rgba(255,255,255,.6)">notify dev</text>
+          <defs><marker id="a3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#991b1b"/></marker></defs>
+          <text x="200" y="140" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">AUTOMATED DEVSECOPS PIPELINE</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-devsec">DevSecOps</span><span class="tbadge b-feat">⭐ Featured</span><span style="font-family:var(--mono);font-size:.6rem;padding:.18rem .55rem;border-radius:3px;border:1px solid rgba(146,64,14,.25);background:rgba(146,64,14,.06);color:#92400e;letter-spacing:.06em;text-transform:uppercase">QF Hackathon</span></div>
+        <div class="tile-title">CodeGuard — Security Automation</div>
+        <div class="tile-desc">Webhook-based DevSecOps pipeline. GitHub Actions + SonarCloud auto-detects and notifies code-level vulnerabilities on every commit. Microsoft Copilot Hackathon QF.</div>
+        <div class="tile-stack"><span class="tstack">GitHub Actions</span><span class="tstack">SonarCloud</span><span class="tstack">Webhooks</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <!-- 4. SAP Anomaly -->
+    <div class="tile" data-tags="ml feat" onclick="openPanel('sap')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <!-- Simulated log lines -->
+          <rect x="20" y="30" width="140" height="100" rx="6" fill="white" stroke="#e2e6ed"/>
+          <text x="90" y="48" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">SAP SYSTEM LOGS</text>
+          <rect x="28" y="55" width="124" height="6" rx="2" fill="#e2e6ed" opacity=".7"/>
+          <rect x="28" y="65" width="100" height="6" rx="2" fill="#e2e6ed" opacity=".7"/>
+          <rect x="28" y="75" width="124" height="6" rx="2" fill="#e2e6ed" opacity=".7"/>
+          <rect x="28" y="85" width="80" height="6" rx="2" fill="#e2e6ed" opacity=".7"/>
+          <rect x="28" y="95" width="124" height="6" rx="2" fill="#fca5a5" opacity=".9"/>
+          <rect x="28" y="105" width="90" height="6" rx="2" fill="#e2e6ed" opacity=".7"/>
+          <rect x="28" y="115" width="124" height="6" rx="2" fill="#fca5a5" opacity=".9"/>
+          <text x="152" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#9ca3af">→</text>
+          <rect x="168" y="40" width="85" height="80" rx="6" fill="white" stroke="#e2e6ed"/>
+          <text x="210" y="65" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">ISOLATION</text>
+          <text x="210" y="78" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">FOREST</text>
+          <text x="210" y="95" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">5% threshold</text>
+          <text x="256" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#9ca3af">→</text>
+          <rect x="268" y="40" width="112" height="80" rx="6" fill="#0f2557"/>
+          <text x="324" y="68" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="white">ANOMALY</text>
+          <text x="324" y="82" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="white">FLAGGED</text>
+          <text x="324" y="96" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="rgba(255,255,255,.5)">visualised</text>
+          <text x="200" y="150" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">UNSUPERVISED ML ON SAP LOGS</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-ml">ML & AI</span><span class="tbadge b-feat">⭐ Featured</span></div>
+        <div class="tile-title">SAP Log Anomaly Detection</div>
+        <div class="tile-desc">Unsupervised ML on SAP system logs. Isolation Forest flags anomalous entries at a 5% threshold. Unique bridge of 2 years enterprise SAP experience and applied ML.</div>
+        <div class="tile-stack"><span class="tstack">scikit-learn</span><span class="tstack">Isolation Forest</span><span class="tstack">Pandas</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <!-- 5. GenAI AWS -->
+    <div class="tile" data-tags="ml cloud feat" onclick="openPanel('genai')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="20" y="50" width="80" height="60" rx="6" fill="white" stroke="#e2e6ed"/>
+          <text x="60" y="74" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">BASE</text>
+          <text x="60" y="87" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">MODEL</text>
+          <text x="60" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">JumpStart</text>
+          <line x1="100" y1="80" x2="130" y2="80" stroke="#0f2557" stroke-width="1.5" marker-end="url(#a4)"/>
+          <rect x="130" y="50" width="80" height="60" rx="6" fill="white" stroke="#e2e6ed"/>
+          <text x="170" y="74" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">FINE</text>
+          <text x="170" y="87" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">TUNING</text>
+          <text x="170" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">domain data</text>
+          <line x1="210" y1="80" x2="240" y2="80" stroke="#0f2557" stroke-width="1.5" marker-end="url(#a4)"/>
+          <rect x="240" y="50" width="80" height="60" rx="6" fill="white" stroke="#e2e6ed"/>
+          <text x="280" y="74" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">EVAL</text>
+          <text x="280" y="87" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">UATE</text>
+          <text x="280" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">before/after</text>
+          <line x1="320" y1="80" x2="345" y2="80" stroke="#0f2557" stroke-width="1.5" marker-end="url(#a4)"/>
+          <rect x="345" y="55" width="48" height="50" rx="5" fill="#0f2557"/>
+          <text x="369" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="white">AWS</text>
+          <text x="369" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="rgba(255,255,255,.6)">S3 + SM</text>
+          <defs><marker id="a4" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#0f2557"/></marker></defs>
+          <text x="200" y="145" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">FOUNDATION MODEL FINE-TUNING · AWS</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-ml">ML & AI</span><span class="tbadge b-cloud">Cloud</span><span class="tbadge b-feat">⭐ Featured</span></div>
+        <div class="tile-title">GenAI Fine-Tuning on AWS SageMaker</div>
+        <div class="tile-desc">Deployed and fine-tuned a foundation model via SageMaker JumpStart for domain-specific text generation. Evaluated baseline vs post-fine-tuning performance. Part of AWS GenAI Nanodegree.</div>
+        <div class="tile-stack"><span class="tstack">AWS SageMaker</span><span class="tstack">PyTorch</span><span class="tstack">Python</span><span class="tstack">S3</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <!-- 6. ClassMeet -->
+    <div class="tile" data-tags="web" onclick="openPanel('classmeet')">
+      <div class="tile-visual" style="background:var(--surface);display:flex;align-items:center;justify-content:center">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="40" y="30" width="140" height="90" rx="8" fill="white" stroke="#e2e6ed" stroke-width="1.5"/>
+          <rect x="40" y="30" width="140" height="24" rx="8" fill="#0f2557"/>
+          <rect x="40" y="42" width="140" height="12" fill="#0f2557"/>
+          <circle cx="56" cy="42" r="4" fill="#FF5F57"/>
+          <circle cx="70" cy="42" r="4" fill="#FEBC2E"/>
+          <circle cx="84" cy="42" r="4" fill="#28C840"/>
+          <rect x="52" y="64" width="116" height="8" rx="2" fill="#e2e6ed"/>
+          <rect x="52" y="78" width="90" height="8" rx="2" fill="#e2e6ed"/>
+          <rect x="52" y="92" width="116" height="8" rx="2" fill="#e2e6ed"/>
+          <rect x="220" y="30" width="140" height="90" rx="8" fill="white" stroke="#e2e6ed" stroke-width="1.5"/>
+          <circle cx="290" cy="75" r="25" fill="#f4f6f9" stroke="#e2e6ed"/>
+          <text x="290" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#0f2557">👤</text>
+          <line x1="180" y1="75" x2="218" y2="75" stroke="#0f2557" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="200" y="150" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">REAL-TIME VIDEO CONFERENCING PLATFORM</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-web">Web App</span></div>
+        <div class="tile-title">ClassMeet — Virtual Classroom</div>
+        <div class="tile-desc">Real-time video conferencing platform built for remote classroom collaboration. Features group chat, room management, and peer-to-peer video using WebRTC.</div>
+        <div class="tile-stack"><span class="tstack">WebRTC</span><span class="tstack">Node.js</span><span class="tstack">JavaScript</span><span class="tstack">Socket.io</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <!-- 7. Math Adaptive -->
+    <div class="tile" data-tags="ml" onclick="openPanel('math')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="60" y="35" width="280" height="90" rx="8" fill="white" stroke="#e2e6ed"/>
+          <text x="200" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#9ca3af">DIFFICULTY LEVEL</text>
+          <line x1="80" y1="80" x2="320" y2="80" stroke="#e2e6ed" stroke-width="1"/>
+          <circle cx="120" cy="80" r="8" fill="#e2e6ed"/>
+          <text x="120" y="84" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4b5563">1</text>
+          <circle cx="175" cy="80" r="8" fill="#e2e6ed"/>
+          <text x="175" y="84" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4b5563">2</text>
+          <circle cx="230" cy="80" r="10" fill="#0f2557"/>
+          <text x="230" y="84" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="white">3</text>
+          <circle cx="285" cy="80" r="8" fill="#e2e6ed"/>
+          <text x="285" y="84" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4b5563">4</text>
+          <text x="200" y="108" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">adapts based on performance</text>
+          <text x="200" y="150" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">ADAPTIVE DIFFICULTY ENGINE</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-ml">ML & AI</span></div>
+        <div class="tile-title">Math Adaptive Learning Engine</div>
+        <div class="tile-desc">AI-powered adaptive math learning system that tracks user performance and dynamically adjusts question difficulty in real time. First independent applied AI project.</div>
+        <div class="tile-stack"><span class="tstack">Python</span><span class="tstack">AI Logic</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <!-- 8. Email Spam -->
+    <div class="tile" data-tags="ml" onclick="openPanel('spam')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="40" y="40" width="90" height="80" rx="6" fill="white" stroke="#e2e6ed"/>
+          <text x="85" y="70" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#9ca3af">EMAIL</text>
+          <text x="85" y="84" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#9ca3af">TEXT</text>
+          <text x="85" y="98" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">raw corpus</text>
+          <line x1="130" y1="80" x2="158" y2="80" stroke="#0f2557" stroke-width="1.5" marker-end="url(#a5)"/>
+          <rect x="158" y="40" width="84" height="80" rx="6" fill="white" stroke="#e2e6ed"/>
+          <text x="200" y="72" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">TF-IDF</text>
+          <text x="200" y="85" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">vectorise</text>
+          <text x="200" y="98" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">+ clean</text>
+          <line x1="242" y1="80" x2="270" y2="80" stroke="#0f2557" stroke-width="1.5" marker-end="url(#a5)"/>
+          <rect x="270" y="40" width="90" height="35" rx="6" fill="white" stroke="#4ade80" stroke-width="1.5"/>
+          <text x="315" y="63" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#166534">✓ HAM</text>
+          <rect x="270" y="85" width="90" height="35" rx="6" fill="white" stroke="#fca5a5" stroke-width="1.5"/>
+          <text x="315" y="108" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#991b1b">✗ SPAM</text>
+          <defs><marker id="a5" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#0f2557"/></marker></defs>
+          <text x="200" y="150" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">NLP TEXT CLASSIFICATION</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-ml">ML & AI</span><span class="tbadge b-beginner">Learning Project</span></div>
+        <div class="tile-title">Email Spam Detection</div>
+        <div class="tile-desc">NLP-based binary classifier distinguishing spam from ham emails. Uses TF-IDF vectorization with scikit-learn classifiers and preprocessing pipeline.</div>
+        <div class="tile-stack"><span class="tstack">scikit-learn</span><span class="tstack">NLP</span><span class="tstack">TF-IDF</span><span class="tstack">Python</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <!-- 9. Diabetes Detection -->
+    <div class="tile" data-tags="ml" onclick="openPanel('diabetes')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="30" y="40" width="340" height="80" rx="8" fill="white" stroke="#e2e6ed"/>
+          <text x="200" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#9ca3af">MODEL COMPARISON</text>
+          <rect x="50" y="70" width="60" height="36" rx="4" fill="var(--navy-dim,#f4f6f9)" stroke="#e2e6ed"/>
+          <text x="80" y="87" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">Log Reg</text>
+          <text x="80" y="99" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557" font-weight="bold">75%</text>
+          <rect x="122" y="70" width="60" height="36" rx="4" fill="var(--navy-dim,#f4f6f9)" stroke="#e2e6ed"/>
+          <text x="152" y="87" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">Rand Forest</text>
+          <text x="152" y="99" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557" font-weight="bold">78%</text>
+          <rect x="194" y="65" width="66" height="46" rx="4" fill="#0f2557"/>
+          <text x="227" y="84" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="white">Best</text>
+          <text x="227" y="97" text-anchor="middle" font-family="JetBrains Mono" font-size="8.5" fill="white" font-weight="bold">78%</text>
+          <text x="227" y="107" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="rgba(255,255,255,.6)">accuracy</text>
+          <rect x="270" y="70" width="60" height="36" rx="4" fill="var(--navy-dim,#f4f6f9)" stroke="#e2e6ed"/>
+          <text x="300" y="87" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">SVM</text>
+          <text x="300" y="99" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557" font-weight="bold">76%</text>
+          <text x="200" y="148" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">BINARY CLASSIFICATION · PIMA DATASET</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-ml">ML & AI</span><span class="tbadge b-beginner">Learning Project</span></div>
+        <div class="tile-title">Diabetes Detection Model</div>
+        <div class="tile-desc">Binary classification on the Pima Indians dataset. Compared Logistic Regression, Random Forest, and SVM. Best accuracy: 78% with Random Forest after preprocessing.</div>
+        <div class="tile-stack"><span class="tstack">scikit-learn</span><span class="tstack">Pandas</span><span class="tstack">Python</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <!-- 10. Data Analytics Forage -->
+    <div class="tile" data-tags="de" onclick="openPanel('forage')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <rect x="30" y="35" width="340" height="90" rx="8" fill="white" stroke="#e2e6ed"/>
+          <rect x="50" y="110" width="40" height="10" rx="2" fill="#e2e6ed"/>
+          <rect x="50" y="70" width="40" height="50" rx="2" fill="#c7d2fe"/>
+          <rect x="100" y="90" width="40" height="30" rx="2" fill="#0f2557" opacity=".7"/>
+          <rect x="150" y="55" width="40" height="65" rx="2" fill="#0f2557"/>
+          <rect x="200" y="75" width="40" height="45" rx="2" fill="#c7d2fe"/>
+          <rect x="250" y="45" width="40" height="75" rx="2" fill="#0f2557" opacity=".8"/>
+          <rect x="300" y="85" width="40" height="35" rx="2" fill="#c7d2fe"/>
+          <text x="200" y="148" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">TATA iQ DATA ANALYTICS SIMULATION</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-de">Data Analytics</span></div>
+        <div class="tile-title">Tata iQ Data Analytics Simulation</div>
+        <div class="tile-desc">Forage virtual internship with Tata. Analysed financial customer data to identify delinquency patterns using EDA and ML. Developed data-driven recommendations for collections strategy.</div>
+        <div class="tile-stack"><span class="tstack">Python</span><span class="tstack">Pandas</span><span class="tstack">EDA</span><span class="tstack">Visualization</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <!-- 11. IRIS -->
+    <div class="tile" data-tags="ml" onclick="openPanel('iris')">
+      <div class="tile-visual">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="160" fill="#f4f6f9"/>
+          <circle cx="140" cy="80" r="30" fill="rgba(15,37,87,.08)" stroke="#0f2557" stroke-width="1" stroke-dasharray="4,3"/>
+          <circle cx="200" cy="80" r="30" fill="rgba(29,58,138,.08)" stroke="#1d3a8a" stroke-width="1" stroke-dasharray="4,3"/>
+          <circle cx="260" cy="80" r="30" fill="rgba(15,37,87,.05)" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="125" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">Setosa</text>
+          <text x="200" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#1d3a8a">Versi</text>
+          <text x="275" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4b5563">Virginica</text>
+          <circle cx="132" cy="85" r="3" fill="#0f2557"/>
+          <circle cx="148" cy="78" r="3" fill="#0f2557"/>
+          <circle cx="138" cy="92" r="3" fill="#0f2557"/>
+          <circle cx="195" cy="72" r="3" fill="#1d3a8a"/>
+          <circle cx="208" cy="85" r="3" fill="#1d3a8a"/>
+          <circle cx="200" cy="90" r="3" fill="#1d3a8a"/>
+          <circle cx="258" cy="77" r="3" fill="#9ca3af"/>
+          <circle cx="268" cy="88" r="3" fill="#9ca3af"/>
+          <circle cx="252" cy="86" r="3" fill="#9ca3af"/>
+          <text x="200" y="148" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">MULTICLASS CLASSIFICATION · IRIS DATASET</text>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-badges"><span class="tbadge b-ml">ML & AI</span><span class="tbadge b-beginner">Learning Project</span></div>
+        <div class="tile-title">IRIS Classification</div>
+        <div class="tile-desc">Classic multiclass classification on the Iris dataset. Explored KNN, Decision Tree, and Logistic Regression. Focus on feature analysis and decision boundary visualisation.</div>
+        <div class="tile-stack"><span class="tstack">scikit-learn</span><span class="tstack">Matplotlib</span><span class="tstack">Python</span></div>
+        <div class="tile-hint">Explore →</div>
+      </div>
+    </div>
+
+    <div class="no-results" id="no-results">
+      <h3>No projects found</h3>
+      <p>Try a different filter or search term</p>
+    </div>
+
+  </div><!-- end grid -->
+</div><!-- end projects-section -->
+
+<footer>
+  <p><em>Aadya Anil Kumar</em> · <a href="index.html">← Back to Portfolio</a> · MSc Data Science · TU Wien · Vienna · © 2026</p>
 </footer>
 
+<!-- SIDE PANEL -->
+<div class="panel-overlay" id="overlay" onclick="closePanel()"></div>
+<div id="side-panel">
+  <div class="panel-close-row">
+    <button class="panel-close-btn" onclick="closePanel()">✕</button>
+    <a id="panel-gh" href="#" target="_blank" class="panel-gh-link">↗ GitHub Repo</a>
+  </div>
+  <div id="panel-content"></div>
+</div>
+
 <script>
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+// ── FILTER ──
+let activeFilter='all', activeSearch='';
+function filter(tag, btn){
+  activeFilter=tag;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+function doSearch(){
+  activeSearch=document.getElementById('search-input').value.toLowerCase().trim();
+  applyFilters();
+}
+function applyFilters(){
+  const tiles=document.querySelectorAll('.tile');
+  let visible=0;
+  tiles.forEach(t=>{
+    const tags=t.dataset.tags||'';
+    const text=t.textContent.toLowerCase();
+    const matchFilter=activeFilter==='all'||tags.includes(activeFilter);
+    const matchSearch=!activeSearch||text.includes(activeSearch);
+    if(matchFilter&&matchSearch){t.classList.remove('hidden');visible++}
+    else t.classList.add('hidden');
   });
+  document.getElementById('results-count').textContent=visible+' project'+(visible!==1?'s':'');
+  document.getElementById('no-results').classList.toggle('show',visible===0);
+}
+// init count
+window.addEventListener('DOMContentLoaded',()=>{
+  const total=document.querySelectorAll('.tile').length;
+  document.getElementById('results-count').textContent=total+' projects';
+});
 
-  // Filtering
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.project-card');
-  const emptyState = document.getElementById('empty-state');
-  const totalStat = document.getElementById('stat-total');
+// ── PANEL DATA ──
+const panels={
+  intrainer:{
+    gh:'https://github.com/Aadya-Anil/Intrainer_interviewSimulator',
+    badges:'<span class="tbadge b-ml">ML & AI</span><span class="tbadge b-web">Web</span><span class="tbadge b-feat">⭐ B.Tech Major Project</span>',
+    title:'InTrainer',
+    sub:'OpenAI Whisper · CNN-LSTM · Xception · Python · Flask',
+    desc:"InTrainer simulates a real job interview and gives you real-time feedback on three axes: what you say (transcribed by Whisper), how you look (facial expressions via CNN-LSTM), and how you hold yourself (posture via Xception). It's my B.Tech capstone project and my most technically complex build.",
+    stats:[{n:'3',l:'Feedback axes simultaneously'},{n:'RT',l:'Real-time processing'},{n:'3',l:'ML models integrated'}],
+    bullets:['OpenAI Whisper transcribes speech and analyses clarity, pace, and filler word usage.','CNN-LSTM model tracks facial micro-expressions across video frames for expression scoring.','Xception model classifies body posture from keypoints extracted each frame.','All three signals combined into a structured feedback report post-interview.'],
+    stack:['OpenAI Whisper','CNN-LSTM','Xception','Python','Flask','OpenCV','TensorFlow']
+  },
+  fraud:{
+    gh:'https://github.com/Aadya-Anil/ReferralProgram_Data-Engineering-Project',
+    badges:'<span class="tbadge b-de">Data Engineering</span><span class="tbadge b-cloud">Cloud</span><span class="tbadge b-feat">⭐ Industry Project</span>',
+    title:'Referral Fraud Detection Pipeline',
+    sub:'Python · Pandas · Docker · Vercel · Fintech',
+    desc:'Built during my internship at Springer Capital. Starting from 7 raw, messy datasets from a fintech referral rewards program, I built a complete ELT pipeline that profiles, cleans, joins, and applies fraud detection business logic — then ships the results to a live dashboard.',
+    stats:[{n:'7',l:'Raw datasets profiled'},{n:'3',l:'Fraud rule layers'},{n:'1',l:'Live Vercel dashboard'}],
+    bullets:['Profiled 7 raw datasets identifying nulls, timezone inconsistencies, and schema mismatches.','Applied timezone-aware cleaning and multi-table joins with Pandas.','Implemented layered business logic to flag potentially fraudulent referral reward patterns.','Containerized the full pipeline in Docker for reproducibility.','Deployed a live KPI dashboard on Vercel showing fraud rates and funnel metrics.'],
+    stack:['Python','Pandas','Docker','Vercel','Git','ELT','Data Profiling']
+  },
+  codeguard:{
+    gh:'https://github.com/Aadya-Anil/CodeGuard',
+    badges:'<span class="tbadge b-devsec">DevSecOps</span><span style="font-family:var(--mono);font-size:.6rem;padding:.18rem .55rem;border-radius:3px;border:1px solid rgba(146,64,14,.25);background:rgba(146,64,14,.06);color:#92400e;letter-spacing:.06em;text-transform:uppercase">QF · FY25 Hackathon</span>',
+    title:'CodeGuard',
+    sub:'GitHub Actions · SonarCloud · Webhooks · DevSecOps',
+    desc:'A fully automated security scan pipeline that triggers on every git push. CodeGuard listens for GitHub webhook events, fires off a SonarCloud SAST scan, and automatically notifies the developer of any code-level vulnerabilities — all without a single manual step. Reached the Quarter Finals of the Microsoft FY25 Copilot Hackathon.',
+    stats:[{n:'QF',l:'Microsoft FY25 Hackathon'},{n:'0',l:'Manual steps required'},{n:'100%',l:'Automated coverage'}],
+    bullets:['Webhook listener configured to fire on every push event to the repository.','GitHub Actions workflow orchestrates the full scan pipeline.','SonarCloud SAST identifies security vulnerabilities at the code level.','Automated notification system alerts developers immediately upon detection.'],
+    stack:['GitHub Actions','SonarCloud','Webhooks','CI/CD','SAST','DevSecOps','YAML']
+  },
+  sap:{
+    gh:'https://github.com/Aadya-Anil/SAP-Log-anomaly-detection',
+    badges:'<span class="tbadge b-ml">ML & AI</span><span class="tbadge b-feat">⭐ Domain Expert Project</span>',
+    title:'SAP Log Anomaly Detection',
+    sub:'Python · Pandas · scikit-learn · Isolation Forest',
+    desc:"What makes this project different is domain depth. After 2 years resolving 100+ incidents in SAP production environments, I know what 'normal' looks like in an SAP system log — and what shouldn't be there. This project applies Isolation Forest to surface exactly those deviations, automatically.",
+    stats:[{n:'5%',l:'Contamination threshold'},{n:'2yr',l:'Domain expertise applied'},{n:'∞',l:'Works on any log file'}],
+    bullets:['Parsed raw SAP system log files into structured DataFrames using Pandas.','Applied Isolation Forest — optimal for unsupervised anomaly detection on tabular log data.','Tuned the contamination parameter to 0.05 based on real-world SAP incident rates.','Visualized anomaly distribution over time using severity-encoded line charts.'],
+    stack:['Python','Pandas','scikit-learn','Isolation Forest','Matplotlib','NumPy']
+  },
+  genai:{
+    gh:'https://github.com/Aadya-Anil/GenAI-with-AWS-project',
+    badges:'<span class="tbadge b-ml">ML & AI</span><span class="tbadge b-cloud">Cloud</span><span class="tbadge b-feat">⭐ AWS × Udacity Nanodegree</span>',
+    title:'GenAI Fine-Tuning on AWS SageMaker',
+    sub:'AWS SageMaker · PyTorch · Python · S3 · JumpStart',
+    desc:'Part of the AWS Generative AI Nanodegree (Udacity scholarship). Deployed a pre-trained foundation model via SageMaker JumpStart, evaluated its baseline performance on a domain-specific task, fine-tuned it on a curated dataset, then re-evaluated to quantify improvement.',
+    stats:[{n:'2',l:'Evaluation rounds (before/after)'},{n:'S3',l:'Model artefacts stored'},{n:'1',l:'Deployed endpoint managed'}],
+    bullets:['Selected and deployed a pre-trained foundation model via SageMaker JumpStart.','Evaluated baseline text generation quality on domain-specific prompts.','Fine-tuned the model on a curated domain dataset using SageMaker training jobs.','Re-deployed and compared pre vs post fine-tuning output quality.','Managed endpoint lifecycle and cleaned up resources to control AWS costs.'],
+    stack:['AWS SageMaker','PyTorch','Python','S3','SageMaker JumpStart','Jupyter']
+  },
+  classmeet:{
+    gh:'https://github.com/Aadya-Anil/ClassMeet',
+    badges:'<span class="tbadge b-web">Web App</span><span class="tbadge b-beginner">B.Tech Mini Project</span>',
+    title:'ClassMeet — Virtual Classroom',
+    sub:'WebRTC · Node.js · Socket.io · JavaScript',
+    desc:'A real-time video conferencing web app built for remote classroom collaboration. ClassMeet supports multi-user video rooms, real-time group chat, and room management — built from scratch using WebRTC for peer-to-peer connections.',
+    stats:[{n:'P2P',l:'WebRTC architecture'},{n:'RT',l:'Real-time chat'},{n:'∞',l:'Multi-user rooms'}],
+    bullets:['WebRTC used for peer-to-peer video/audio streaming between participants.','Socket.io handles signalling, room management, and real-time group chat.','Room creation and joining logic with unique room IDs.','Responsive UI for classroom use on desktop and tablet.'],
+    stack:['WebRTC','Node.js','Socket.io','JavaScript','HTML/CSS']
+  },
+  math:{
+    gh:'https://github.com/Aadya-Anil/math-adaptive-prototype',
+    badges:'<span class="tbadge b-ml">ML & AI</span>',
+    title:'Math Adaptive Learning Engine',
+    sub:'Python · Adaptive Difficulty · AI Logic',
+    desc:'First independent applied AI project. An adaptive math learning system that tracks a user\'s performance over time and dynamically adjusts question difficulty — serving harder questions on success and easier ones on failure to optimise learning pace.',
+    stats:[{n:'3',l:'Difficulty levels'},{n:'RT',l:'Live difficulty adjustment'},{n:'1st',l:'Independent AI project'}],
+    bullets:['Tracks user response accuracy and speed across question attempts.','Dynamic difficulty engine adjusts up or down after each answer.','Question bank structured across difficulty tiers for seamless progression.','Performance dashboard shows learning trajectory over time.'],
+    stack:['Python','AI Logic','Data Structures']
+  },
+  spam:{
+    gh:'https://github.com/Aadya-Anil/Email-Spam-Detection',
+    badges:'<span class="tbadge b-ml">ML & AI</span><span class="tbadge b-beginner">Learning Project</span>',
+    title:'Email Spam Detection',
+    sub:'scikit-learn · TF-IDF · NLP · Python',
+    desc:'Binary text classification distinguishing spam from legitimate email. A clean NLP pipeline: raw text → preprocessing → TF-IDF vectorization → classifier training → evaluation. Good introduction to end-to-end NLP workflows.',
+    stats:[{n:'NLP',l:'Text preprocessing pipeline'},{n:'2',l:'Classes: spam/ham'},{n:'TF-IDF',l:'Feature extraction method'}],
+    bullets:['Text cleaning: lowercasing, stopword removal, punctuation stripping.','TF-IDF vectorization to convert email text into numerical features.','Trained and compared Naive Bayes and Logistic Regression classifiers.','Evaluated with precision, recall, F1-score, and confusion matrix.'],
+    stack:['scikit-learn','NLTK','TF-IDF','Naive Bayes','Python','Pandas']
+  },
+  diabetes:{
+    gh:'https://github.com/Aadya-Anil/Diabetes-Detection',
+    badges:'<span class="tbadge b-ml">ML & AI</span><span class="tbadge b-beginner">Learning Project</span>',
+    title:'Diabetes Detection Model',
+    sub:'scikit-learn · Pandas · Python · Pima Dataset',
+    desc:'Binary classification on the Pima Indians Diabetes dataset. Compared multiple classifiers after preprocessing and feature analysis. Best result: 78% accuracy with Random Forest. Solid end-to-end supervised ML workflow.',
+    stats:[{n:'78%',l:'Best model accuracy'},{n:'3',l:'Models compared'},{n:'768',l:'Data points in dataset'}],
+    bullets:['Handled missing values and applied feature scaling as preprocessing steps.','Compared Logistic Regression, Random Forest, and SVM classifiers.','Used cross-validation to avoid overfitting and ensure generalisation.','Random Forest achieved 78% accuracy as the top performer.'],
+    stack:['scikit-learn','Pandas','NumPy','Matplotlib','Python']
+  },
+  forage:{
+    gh:'https://github.com/Aadya-Anil/Data-Analytics_Forage',
+    badges:'<span class="tbadge b-de">Data Analytics</span>',
+    title:'Tata iQ Data Analytics Simulation',
+    sub:'Python · Pandas · EDA · Visualization · Tata Forage',
+    desc:'Virtual data analytics internship simulation with Tata iQ via Forage. Analysed financial customer data to identify factors associated with delinquency, built visualisations, and developed data-driven recommendations to support targeted collections strategies.',
+    stats:[{n:'EDA',l:'Exploratory data analysis'},{n:'1',l:'Business recommendation deck'},{n:'🏢',l:'Tata iQ simulation'}],
+    bullets:['Analysed customer financial data to identify delinquency risk patterns.','Performed EDA with correlation analysis and distribution visualisations.','Built predictive features to support a collections strategy recommendation.','Packaged findings into a structured business insight report.'],
+    stack:['Python','Pandas','Matplotlib','Seaborn','EDA']
+  },
+  iris:{
+    gh:'https://github.com/Aadya-Anil/IRIS_Classification',
+    badges:'<span class="tbadge b-ml">ML & AI</span><span class="tbadge b-beginner">Learning Project</span>',
+    title:'IRIS Classification',
+    sub:'scikit-learn · Matplotlib · Python · Seaborn',
+    desc:'Classic multiclass classification on the Iris dataset — a foundational ML exercise. Explored KNN, Decision Tree, and Logistic Regression, with visualisations of feature distributions and decision boundaries.',
+    stats:[{n:'3',l:'Species classified'},{n:'3',l:'Algorithms explored'},{n:'4',l:'Features analysed'}],
+    bullets:['Loaded and explored the Iris dataset with feature pair plots and distribution charts.','Trained KNN, Decision Tree, and Logistic Regression classifiers.','Visualised decision boundaries to understand model behaviour.','Compared accuracy scores across models with cross-validation.'],
+    stack:['scikit-learn','Pandas','Matplotlib','Seaborn','Python']
+  }
+};
 
-  totalStat.textContent = cards.length;
-
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-      let visibleCount = 0;
-
-      cards.forEach(card => {
-        const categories = card.getAttribute('data-category');
-        const matches = filter === 'all' || categories.includes(filter);
-        card.classList.toggle('hide', !matches);
-        if (matches) visibleCount++;
-      });
-
-      emptyState.classList.toggle('hidden', visibleCount !== 0);
-    });
-  });
+function openPanel(id){
+  const d=panels[id]; if(!d) return;
+  const s=d.stats.map(s=>`<div class="ps"><div class="ps-num">${s.n}</div><div class="ps-label">${s.l}</div></div>`).join('');
+  const b=d.bullets.map(b=>`<li>${b}</li>`).join('');
+  const p=d.stack.map(s=>`<span class="ppill">${s}</span>`).join('');
+  document.getElementById('panel-content').innerHTML=`
+    <div class="panel-badges">${d.badges}</div>
+    <div class="panel-title">${d.title}</div>
+    <div class="panel-sub">${d.sub}</div>
+    <div class="panel-desc">${d.desc}</div>
+    <div class="panel-stats">${s}</div>
+    <div class="panel-section-label">What I built</div>
+    <ul class="panel-bullets">${b}</ul>
+    <div class="panel-section-label">Tech stack</div>
+    <div class="panel-stack">${p}</div>
+  `;
+  document.getElementById('panel-gh').href=d.gh;
+  document.getElementById('side-panel').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePanel(){
+  document.getElementById('side-panel').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel()});
 </script>
 </body>
 </html>
