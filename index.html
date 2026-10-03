@@ -32,7 +32,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16
 ::-webkit-scrollbar-thumb{background:var(--navy);border-radius:3px}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5rem;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5rem;background:rgba(255,255,255,.70);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .nav-logo{font-family:var(--display);font-size:2.15rem;font-weight:700;color:var(--navy);font-style:italic;letter-spacing:.01em}
 .nav-links{display:flex;gap:2.2rem;list-style:none}
 .nav-links a{font-family:var(--body);font-size:.82rem;font-weight:500;color:var(--gray-md);text-decoration:none;letter-spacing:.03em;position:relative;transition:color .2s}
@@ -271,7 +271,7 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="mailto:off.aadyaanil@gmail.com" class="nav-cta">Hire Me</a>
+  <a href="#contact" class="nav-cta">Hire Me</a>
 </nav>
 
 <!-- HERO -->
@@ -329,10 +329,10 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
   </div>
 </div>
 
-<!-- JOURNEY -->
+  <!-- JOURNEY -->
 <section id="journey">
   <div class="sec-inner">
-    <div class="sec-label">// career arc</div>
+      <!-- <div class="sec-label">// career arc</div>-->
     <h2 class="sec-title">The <em>Path</em> Here</h2>
     <div class="journey-track">
       <div class="journey-baseline"></div>
@@ -351,7 +351,7 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="sec-inner">
-    <div class="sec-label">// work history</div>
+      <!-- <div class="sec-label">// work history</div> -->
     <h2 class="sec-title">Where I've <em>Worked</em></h2>
     <div class="exp-list">
       <div class="exp-card">
@@ -387,8 +387,8 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
 <!-- PROJECTS -->
 <section id="projects">
   <div class="sec-inner">
-    <div class="sec-label">// selected work</div>
-    <h2 class="sec-title">Projects — <em>click to explore</em></h2>
+      <!-- <div class="sec-label">// selected work</div>-->
+    <h2 class="sec-title">Projects</h2>
     <div class="projects-grid">
       <div class="proj-card reveal" onclick="openPanel('fraud')">
         <div class="proj-icon">🔍</div>
@@ -424,7 +424,7 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
 <!-- SKILLS -->
 <section id="skills">
   <div class="sec-inner">
-    <div class="sec-label">// technical stack</div>
+      <!-- <div class="sec-label">// technical stack</div>-->
     <h2 class="sec-title">What I <em>Work With</em></h2>
     <div class="skills-groups">
       <div class="sg"><div class="sg-label">Languages</div><div class="sg-pills"><span class="spill">Python</span><span class="spill">SQL</span><span class="spill">JavaScript</span><span class="spill">HTML/CSS</span></div></div>
@@ -481,7 +481,7 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
 <button id="term-btn">&gt;_</button>
 <div id="term-overlay">
   <div class="term-bar"><div class="tdot tdot-r"></div><div class="tdot tdot-y"></div><div class="tdot tdot-g"></div><span class="term-title">aadya@portfolio:~</span></div>
-  <div id="term-output"><div class="t-line"><span class="t-gold">Type </span><span class="t-hi">help</span><span class="t-gold"> to get started.</span></div></div>
+  <div id="term-output"><div class="t-line"><span class="t-gold">Type </span><span class="t-hi">"hi"</span><span class="t-gold"> to get started.</span></div></div>
   <div id="term-input-row"><span>$</span><input id="term-input" type="text" placeholder="enter command..." autocomplete="off" spellcheck="false"/></div>
 </div>
 
