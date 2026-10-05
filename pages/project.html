@@ -142,7 +142,7 @@ footer a:hover{color:#fff}
   <div class="page-hero-inner">
     <div class="ph-label">// selected work</div>
     <h1 class="ph-title">All <em>Projects</em></h1>
-    <p class="ph-sub">11 projects spanning data engineering, machine learning, AI, DevSecOps, and web development. Click any tile to explore the details.</p>
+    <p class="ph-sub">14 projects spanning data engineering, machine learning, AI, DevSecOps, and web development. Click any tile to explore the details.</p>
   </div>
 </div>
 
@@ -530,7 +530,113 @@ footer a:hover{color:#fff}
         <div class="tile-hint">Explore →</div>
       </div>
     </div>
+<!-- Medallion Architecture Pipeline — insert after the GenAI tile -->
+<div class="tile" data-tags="de feat" onclick="openPanel('medallion')">
+  <div class="tile-visual">
+    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="160" fill="#f4f6f9"/>
+      <rect x="10" y="55" width="62" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="41" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">API +</text>
+      <text x="41" y="87" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">PARQUET</text>
+      <text x="41" y="99" text-anchor="middle" font-family="JetBrains Mono" font-size="6.5" fill="#9ca3af">sources</text>
+      <line x1="72" y1="80" x2="96" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a6)"/>
+      <rect x="96" y="55" width="66" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="129" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">NiFi +</text>
+      <text x="129" y="87" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">Airflow</text>
+      <circle cx="152" cy="60" r="4" fill="#4ade80"><animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></circle>
+      <line x1="162" y1="80" x2="186" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a6)"/>
+      <rect x="186" y="55" width="58" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="215" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#92400e">BRONZE</text>
+      <text x="215" y="93" text-anchor="middle" font-family="JetBrains Mono" font-size="6.5" fill="#9ca3af">raw</text>
+      <line x1="244" y1="80" x2="268" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a6)"/>
+      <rect x="268" y="55" width="56" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="296" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#4b5563">SILVER</text>
+      <text x="296" y="93" text-anchor="middle" font-family="JetBrains Mono" font-size="6.5" fill="#9ca3af">dbt</text>
+      <line x1="324" y1="80" x2="348" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a6)"/>
+      <rect x="348" y="55" width="46" height="50" rx="5" fill="#0f2557"/>
+      <text x="371" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="white">GOLD</text>
+      <text x="371" y="93" text-anchor="middle" font-family="JetBrains Mono" font-size="6.5" fill="rgba(255,255,255,.6)">KPIs</text>
+      <defs><marker id="a6" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#1d3a8a"/></marker></defs>
+      <text x="200" y="140" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">REAL-TIME + BATCH MEDALLION ARCHITECTURE</text>
+    </svg>
+  </div>
+  <div class="tile-body">
+    <div class="tile-badges"><span class="tbadge b-de">Data Engineering</span><span class="tbadge b-feat">⭐ Featured</span></div>
+    <div class="tile-title">Medallion Architecture Pipeline</div>
+    <div class="tile-desc">Full Bronze→Silver→Gold architecture across two pipelines — NiFi streams live weather data every 60s while Airflow + dbt batch-process 5.9M NYC taxi trips through ClickHouse.</div>
+    <div class="tile-stack"><span class="tstack">Apache NiFi</span><span class="tstack">Apache Airflow</span><span class="tstack">dbt</span><span class="tstack">ClickHouse</span></div>
+    <div class="tile-hint">Explore →</div>
+  </div>
+</div>
 
+<!-- Airflow MinIO Parquet Pipeline — insert near the end, before no-results -->
+<div class="tile" data-tags="de" onclick="openPanel('minioparquet')">
+  <div class="tile-visual">
+    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="160" fill="#f4f6f9"/>
+      <rect x="16" y="55" width="62" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="47" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">CSV</text>
+      <text x="47" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">3,725 rows</text>
+      <line x1="78" y1="80" x2="102" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a7)"/>
+      <rect x="102" y="55" width="70" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="137" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">VALIDATE</text>
+      <text x="137" y="89" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">schema.yaml</text>
+      <line x1="172" y1="80" x2="196" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a7)"/>
+      <rect x="196" y="55" width="66" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="229" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">CLEAN</text>
+      <text x="229" y="89" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">PyArrow</text>
+      <line x1="262" y1="80" x2="286" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a7)"/>
+      <rect x="286" y="55" width="54" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="313" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#0f2557">PARQUET</text>
+      <line x1="340" y1="80" x2="356" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a7)"/>
+      <rect x="356" y="55" width="38" height="50" rx="5" fill="#0f2557"/>
+      <text x="375" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="white">MinIO</text>
+      <defs><marker id="a7" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#1d3a8a"/></marker></defs>
+      <text x="200" y="140" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">SCHEMA-VALIDATED PARQUET INGESTION</text>
+    </svg>
+  </div>
+  <div class="tile-body">
+    <div class="tile-badges"><span class="tbadge b-de">Data Engineering</span></div>
+    <div class="tile-title">Airflow MinIO Parquet Pipeline</div>
+    <div class="tile-desc">Containerized Airflow pipeline that validates a CSV against a schema contract, cleans it, converts to Parquet via PyArrow, and lands it in MinIO — a Bronze-layer ingestion pattern.</div>
+    <div class="tile-stack"><span class="tstack">Apache Airflow</span><span class="tstack">MinIO</span><span class="tstack">PyArrow</span><span class="tstack">Docker</span></div>
+    <div class="tile-hint">Explore →</div>
+  </div>
+</div>
+
+<!-- Chatbot Conversations Data Pipeline — insert right after the one above -->
+<div class="tile" data-tags="de" onclick="openPanel('chatbotpg')">
+  <div class="tile-visual">
+    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="160" fill="#f4f6f9"/>
+      <rect x="20" y="55" width="62" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="51" y="77" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">CSV</text>
+      <text x="51" y="91" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">Q&amp;A pairs</text>
+      <line x1="82" y1="80" x2="106" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a8)"/>
+      <rect x="106" y="55" width="70" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="141" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">VALIDATE</text>
+      <text x="141" y="89" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">schema.yaml</text>
+      <line x1="176" y1="80" x2="200" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a8)"/>
+      <rect x="200" y="55" width="70" height="50" rx="5" fill="white" stroke="#e2e6ed"/>
+      <text x="235" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="#0f2557">TRANSFORM</text>
+      <text x="235" y="89" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af">dedupe</text>
+      <line x1="270" y1="80" x2="294" y2="80" stroke="#1d3a8a" stroke-width="1.5" marker-end="url(#a8)"/>
+      <rect x="294" y="55" width="90" height="50" rx="5" fill="#0f2557"/>
+      <text x="339" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5" fill="white">POSTGRES</text>
+      <text x="339" y="89" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="rgba(255,255,255,.6)">@daily</text>
+      <defs><marker id="a8" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#1d3a8a"/></marker></defs>
+      <text x="200" y="140" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#9ca3af" letter-spacing="2">SCHEDULED INGESTION TO POSTGRESQL</text>
+    </svg>
+  </div>
+  <div class="tile-body">
+    <div class="tile-badges"><span class="tbadge b-de">Data Engineering</span></div>
+    <div class="tile-title">Chatbot Conversations Data Pipeline</div>
+    <div class="tile-desc">Airflow DAG that validates, cleans, and loads 3,725 chatbot Q&amp;A pairs into PostgreSQL with schema-contract enforcement and duplicate-skip on rerun — scheduled daily, fully reproducible via Docker.</div>
+    <div class="tile-stack"><span class="tstack">Apache Airflow</span><span class="tstack">PostgreSQL</span><span class="tstack">SQLAlchemy</span><span class="tstack">Docker</span></div>
+    <div class="tile-hint">Explore →</div>
+  </div>
+</div>
+    
     <div class="no-results" id="no-results">
       <h3>No projects found</h3>
       <p>Try a different filter or search term</p>
@@ -697,7 +803,37 @@ const panels={
     stats:[{n:'3',l:'Species classified'},{n:'3',l:'Algorithms explored'},{n:'4',l:'Features analysed'}],
     bullets:['Loaded and explored the Iris dataset with feature pair plots and distribution charts.','Trained KNN, Decision Tree, and Logistic Regression classifiers.','Visualised decision boundaries to understand model behaviour.','Compared accuracy scores across models with cross-validation.'],
     stack:['scikit-learn','Pandas','Matplotlib','Seaborn','Python']
-  }
+  },
+  medallion:{
+  gh:'https://github.com/Aadya-Anil/realtime-and-batch-data-medallion-pipeline',
+  badges:'<span class="tbadge b-de">Data Engineering</span><span class="tbadge b-feat">⭐ Featured</span>',
+  title:'Medallion Architecture Pipeline',
+  sub:'Apache NiFi · Apache Airflow · dbt · ClickHouse · Docker',
+  desc:'A full Bronze→Silver→Gold medallion architecture built across two parallel pipelines. A real-time stream ingests live weather data via NiFi every 60 seconds, while a batch pipeline loads 5.9M NYC Yellow Taxi trip records through Airflow, transforming them through dbt into Silver and Gold analytical layers in ClickHouse.',
+  stats:[{n:'5.9M',l:'Taxi trip rows processed'},{n:'60s',l:'Real-time ingestion interval'},{n:'3',l:'Medallion layers built'}],
+  bullets:['Real-time pipeline: NiFi ingests live weather data from OpenWeather API into a Bronze ClickHouse table every 60 seconds.','Batch pipeline: Airflow ingests NYC Taxi Parquet data, validates schema, and loads it into Bronze.','dbt transforms Bronze into Silver (cleaned, typed) and Gold (daily KPI aggregates) layers.','Fully containerized with Docker Compose — NiFi, Airflow, dbt, and ClickHouse all orchestrated together.'],
+  stack:['Apache NiFi','Apache Airflow','dbt','ClickHouse','Docker','Python','PyArrow']
+},
+minioparquet:{
+  gh:'https://github.com/Aadya-Anil/airflow-minio-parquet-pipeline',
+  badges:'<span class="tbadge b-de">Data Engineering</span>',
+  title:'Airflow MinIO Parquet Pipeline',
+  sub:'Apache Airflow · MinIO · PyArrow · Pandas',
+  desc:'A lightweight data-lake ingestion pattern — the Bronze layer of a medallion architecture on its own. A local CSV is validated against a schema contract, cleaned (whitespace stripped, nulls dropped, types cast), converted to Parquet with PyArrow, and uploaded to MinIO object storage, fully orchestrated by Airflow in Docker.',
+  stats:[{n:'3,725',l:'Rows validated & converted'},{n:'5',l:'Task DAG, schema to storage'},{n:'S3',l:'Compatible object storage'}],
+  bullets:['file_check confirms the source CSV exists before the DAG proceeds.','validate_schema compares CSV columns against a YAML schema contract — fails fast on mismatch.','transform strips whitespace, drops null rows, and casts types with Pandas.','convert_to_parquet converts the cleaned DataFrame to Parquet using PyArrow.','upload_to_minio pushes the Parquet file to an S3-compatible MinIO bucket.'],
+  stack:['Apache Airflow','MinIO','PyArrow','Pandas','Docker','PostgreSQL']
+},
+chatbotpg:{
+  gh:'https://github.com/Aadya-Anil/Chatbot-Conversations-Data-Pipeline',
+  badges:'<span class="tbadge b-de">Data Engineering</span>',
+  title:'Chatbot Conversations Data Pipeline',
+  sub:'Apache Airflow · PostgreSQL · SQLAlchemy',
+  desc:'Takes a raw chatbot conversation dataset — 3,725 question-answer pairs sourced from Kaggle — and loads it into PostgreSQL automatically via Airflow. Runs the same source CSV through a different target than the MinIO pipeline: schema-contract validation, cleaning, then a direct relational load with duplicate-skipping on rerun.',
+  stats:[{n:'3,725',l:'Q&A pairs loaded'},{n:'@daily',l:'Scheduled DAG run'},{n:'0',l:'Duplicate rows on rerun'}],
+  bullets:['file_check and validate_schema guard the pipeline against missing or malformed source data.','transform strips whitespace and drops null rows before load.','load_to_postgres inserts new rows into PostgreSQL and skips duplicates automatically on rerun.','Scheduled to run daily via Airflow, with full Docker Compose reproducibility.'],
+  stack:['Apache Airflow','PostgreSQL','SQLAlchemy','PyYAML','Docker','Pandas']
+}
 };
 
 function openPanel(id){
