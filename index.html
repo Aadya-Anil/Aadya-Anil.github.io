@@ -9,21 +9,24 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:       #f4f3f0;
-  --surface:  #f4f6f9;
-  --card:     #ffffff;
-  --border:   #e2e6ed;
-  --navy:     #0f2557;
-  --navy-mid: #1d3a8a;
-  --navy-dim: rgba(15,37,87,.06);
-  --gray-dk:  #1f2937;
-  --gray-md:  #4b5563;
-  --gray-lt:  #9ca3af;
-  --text:     #111827;
-  --muted:    #4b5563;
+  /* Fonts and layout (unchanged from original) */
   --display:  'Playfair Display',serif;
   --body:     'Inter',sans-serif;
   --mono:     'JetBrains Mono',monospace;
+
+  /* New color theme */
+  --bg:       #1A3A4A;             /* page background (petrol) */
+  --surface:  #3A3D42;             /* cards / sections (warm charcoal) */
+  --card:     #3A3D42;
+  --border:   rgba(232,228,224,.15);
+  --navy:     #4ECDC4;             /* single accent (teal) */
+  --navy-mid: #4ECDC4;
+  --navy-dim: rgba(78,205,196,.10);
+  --gray-dk:  #E8E4E0;
+  --gray-md:  #D0CBC6;
+  --gray-lt:  #A7AFB4;
+  --text:     #E8E4E0;             /* body text (warm off-white) */
+  --muted:    #D0CBC6;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;overflow-x:hidden}
@@ -244,7 +247,7 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><a href="index.html">Aadya Anil Kumar</div>
+  <div class="nav-logo"><a href="index.html">Aadya Anil Kumar</a></div>
   <ul class="nav-links">
     <li><a href="#journey">Journey</a></li>
     <li><a href="#experience">Experience</a></li>
