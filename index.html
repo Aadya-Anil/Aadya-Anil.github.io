@@ -249,6 +249,25 @@ footer em{color:var(--text);font-style:normal}
   #side-panel{width:100vw}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  /* ── FADED BEIGE SECTION DIVIDERS ── */
+section{position:relative}
+section + section::before,
+.stats-strip::before,
+footer::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:5rem;
+  right:5rem;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(232,228,224,.35),transparent);
+  pointer-events:none;
+}
+@media(max-width:960px){
+  section + section::before,
+  .stats-strip::before,
+  footer::before{left:1.5rem;right:1.5rem}
+}
 </style>
 </head>
 <body>
