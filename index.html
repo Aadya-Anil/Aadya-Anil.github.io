@@ -200,7 +200,7 @@ h2.sec-title em{font-style:italic;color:var(--navy)}
 .cert-meta{font-family:var(--mono);font-size:.63rem;color:var(--gray-lt)}
 
 /* ── CONTACT ── */
-#contact{background:var(--navy);color:#fff}
+#contact{background:var(--surface);color:#fff}
 #contact .sec-label{color:rgba(255,255,255,.55)}
 .contact-wrap{max-width:680px;margin:0 auto;text-align:center}
 .contact-wrap h2{color:#fff;text-align:center;font-size:clamp(2.6rem,5vw,4.4rem);margin-bottom:1.5rem}
@@ -422,15 +422,27 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
 </section>
 
 <!-- CERTS -->
-<section id="certifications" style="background:var(--surface);padding:5rem">
+<section id="certifications">
   <div class="sec-inner">
     <div class="sec-label">// credentials</div>
     <h2 class="sec-title">Certifications</h2>
     <div class="certs-grid">
-      <div class="cert-card reveal"><div class="cert-icon">☁️</div><div><div class="cert-name">Google Cloud Digital Leader</div><div class="cert-meta">Jun 2025 · Google Cloud</div></div></div>
-      <div class="cert-card reveal"><div class="cert-icon">🔷</div><div><div class="cert-name">Azure AI Fundamentals (AI-900)</div><div class="cert-meta">Jun 2025 · Microsoft</div></div></div>
-      <div class="cert-card reveal"><div class="cert-icon">🤖</div><div><div class="cert-name">Generative AI Nanodegree</div><div class="cert-meta">Dec 2024 · AWS × Udacity</div></div></div>
-      <div class="cert-card reveal"><div class="cert-icon">🏆</div><div><div class="cert-name">FY25 Copilot Hackathon</div><div class="cert-meta">Quarter Finalist · Microsoft</div></div></div>
+      <div class="cert-card reveal">
+        <img class="cert-badge" src="images/badges/google-cloud-digital-leader.png" alt="Google Cloud Digital Leader badge"/>
+        <div><div class="cert-name">Google Cloud Digital Leader</div><div class="cert-meta">Jun 2025 · Google Cloud</div></div>
+      </div>
+      <div class="cert-card reveal">
+        <img class="cert-badge" src="images/badges/azure-ai-900.png" alt="Azure AI Fundamentals badge"/>
+        <div><div class="cert-name">Azure AI Fundamentals (AI-900)</div><div class="cert-meta">Jun 2025 · Microsoft</div></div>
+      </div>
+      <div class="cert-card reveal">
+        <img class="cert-badge" src="images/badges/genai-nanodegree.png" alt="Generative AI Nanodegree badge"/>
+        <div><div class="cert-name">Generative AI Nanodegree</div><div class="cert-meta">Dec 2024 · AWS × Udacity</div></div>
+      </div>
+      <div class="cert-card reveal">
+        <img class="cert-badge" src="images/badges/copilot-hackathon.png" alt="FY25 Copilot Hackathon badge"/>
+        <div><div class="cert-name">FY25 Copilot Hackathon</div><div class="cert-meta">Quarter Finalist · Microsoft</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -465,7 +477,10 @@ footer em{color:rgba(255,255,255,.55);font-style:normal}
 <button id="term-btn">&gt;_</button>
 <div id="term-overlay">
   <div class="term-bar"><div class="tdot tdot-r"></div><div class="tdot tdot-y"></div><div class="tdot tdot-g"></div><span class="term-title">aadya@portfolio:~</span></div>
-  <div id="term-output"><div class="t-line"><span class="t-gold">Type </span><span class="t-hi">"hi"</span><span class="t-gold"> to get started.</span></div></div>
+  <div id="term-output">
+  <div class="t-line"><span class="t-gold">Type </span><span class="t-hi">"hi"</span><span class="t-gold"> to get started.</span></div>
+  <div class="t-line"><span class="t-gold">For more details, please contact me through email and i'd be happy to provide you with more information</span></div>
+</div>
   <div id="term-input-row"><span>$</span><input id="term-input" type="text" placeholder="enter command..." autocomplete="off" spellcheck="false"/></div>
 </div>
 
@@ -520,7 +535,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel()});
 // TERMINAL
 const termBtn=document.getElementById('term-btn'),termO=document.getElementById('term-overlay'),termOut=document.getElementById('term-output'),termIn=document.getElementById('term-input');
 termBtn.addEventListener('click',()=>{termO.classList.toggle('open');if(termO.classList.contains('open'))termIn.focus()});
-const CMDS={help:()=>['<span class="t-gold">Commands:</span>','<span class="t-hi">whoami</span>  · who is Aadya?','<span class="t-hi">ls</span>      · list all projects','<span class="t-hi">skills</span>  · print tech stack','<span class="t-hi">work</span>    · work history','<span class="t-hi">contact</span> · get in touch','<span class="t-hi">clear</span>   · clear terminal'],whoami:()=>['<span class="t-hi">Aadya Anil Kumar</span>','<span class="t-gold">MSc Data Science @ TU Wien, Vienna 🇦🇹</span>','<span class="t-gold">Data Engineer @ Springer Capital (Apr–Jul 2026)</span>','<span class="t-gold">Ex SAP Basis Engineer @ Accenture (50+ clients)</span>','<span class="t-hi">Status: open to opportunities 🟢</span>'],ls:()=>['<span class="t-gold">fraud-detection-pipeline</span>  <span class="t-hi">[Python, Docker, Vercel]</span>','<span class="t-gold">codeguard</span>                 <span class="t-hi">[GitHub Actions, SonarCloud] 🏆 QF</span>','<span class="t-gold">sap-log-anomaly</span>           <span class="t-hi">[Isolation Forest, scikit-learn]</span>','<span class="t-gold">inTrainer</span>                 <span class="t-hi">[Whisper, CNN-LSTM, Xception]</span>','<span class="t-gold">genai-sagemaker</span>           <span class="t-hi">[AWS SageMaker, PyTorch]</span>'],skills:()=>['<span class="t-gold">Languages:</span>   <span class="t-hi">Python, SQL, JavaScript</span>','<span class="t-gold">ML/AI:</span>       <span class="t-hi">scikit-learn, TensorFlow, Pandas, NumPy</span>','<span class="t-gold">MLOps:</span>       <span class="t-hi">Airflow, dbt, Docker, GitHub Actions</span>','<span class="t-gold">Data Infra:</span>  <span class="t-hi">PostgreSQL, ClickHouse, NiFi, MinIO</span>','<span class="t-gold">Cloud:</span>       <span class="t-hi">AWS SageMaker, GCP, Azure AI</span>'],work:()=>['<span class="t-hi">Springer Capital</span>  Data Engineer · Apr–Jul 2026','  → Airflow, dbt, ClickHouse, Medallion ELT','<span class="t-hi">Human Initials</span>    Data Analyst · Mar–Apr 2026','  → Python, SQL, Excel analytics','<span class="t-hi">Accenture</span>         SAP Basis Engineer · 2023–2025','  → 50+ clients · 100+ incidents · -20% response time'],contact:()=>['<span class="t-gold">✉</span>  <span class="t-hi">off.aadyaanil@gmail.com</span>','<span class="t-gold">in</span> <span class="t-hi">linkedin.com/in/aadyaanilkumar</span>','<span class="t-gold">gh</span> <span class="t-hi">github.com/Aadya-Anil</span>','<span class="t-gold">📍</span> <span class="t-hi">Vienna, Austria</span>'],clear:()=>'CLEAR'};
+const CMDShelp:()=>['<span class="t-gold">Commands:</span>','<span class="t-hi">whoami</span>  · who is Aadya?','<span class="t-hi">ls</span>      · list all projects','<span class="t-hi">skills</span>  · print tech stack','<span class="t-hi">work</span>    · work history','<span class="t-hi">contact</span> · get in touch','<span class="t-hi">clear</span>   · clear terminal','<span class="t-gold">For more details, please contact me through email and i\'d be happy to provide you with more information</span>']};
 function addLine(h){const d=document.createElement('div');d.className='t-line';d.innerHTML=h;termOut.appendChild(d);termOut.scrollTop=termOut.scrollHeight}
 termIn.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const c=termIn.value.trim().toLowerCase();termIn.value='';addLine(`<span class="t-prompt-str">$</span> <span class="t-hi">${c}</span>`);if(CMDS[c]){const r=CMDS[c]();if(r==='CLEAR'){termOut.innerHTML='';return}r.forEach(l=>addLine(l))}else if(c!=='')addLine(`<span class="t-err">not found: ${c} — try <span class="t-hi">help</span></span>`)});
 </script>
