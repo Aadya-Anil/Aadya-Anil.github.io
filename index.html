@@ -209,9 +209,32 @@ footer p{font-family:var(--mono);font-size:.65rem;color:var(--gray-lt);letter-sp
 footer em{color:var(--text);font-style:normal}
 
 /* ── TERMINAL ── */
-#term-btn{position:fixed;bottom:2rem;right:2rem;z-index:300;width:44px;height:44px;background:var(--navy);border:none;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--mono);font-size:.78rem;font-weight:700;color:var(--bg);box-shadow:0 4px 16px rgba(0,0,0,.3);transition:transform .2s,box-shadow .2s}
-#term-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-#term-overlay{position:fixed;bottom:5.5rem;right:2rem;width:480px;max-width:92vw;background:#0d1b2a;border:1px solid rgba(255,255,255,.08);border-radius:12px;z-index:299;overflow:hidden;display:none;box-shadow:0 24px 48px rgba(0,0,0,.4);font-family:var(--mono)}
+/* ── TERMINAL ── */
+#term-btn{
+  position:fixed;bottom:2rem;right:2rem;z-index:300;
+  width:64px;height:64px;
+  background:var(--navy);border:none;border-radius:14px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  cursor:pointer;
+  font-family:var(--mono);font-size:.85rem;color:var(--bg);
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+  transition:transform .2s,box-shadow .2s;
+}
+#term-btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+#term-btn .tb-icon{font-size:1.05rem;line-height:1;font-weight:700}
+#term-btn .tb-label{font-size:.52rem;letter-spacing:.1em;color:rgba(26,58,74,.75);line-height:1;font-weight:700}
+#term-btn::before{
+  content:'';position:absolute;
+  width:64px;height:64px;border-radius:14px;
+  border:2px solid rgba(78,205,196,.6);
+  animation:term-pulse 2.4s ease-out infinite;
+}
+@keyframes term-pulse{
+  0%{transform:scale(1);opacity:.7}
+  70%{transform:scale(1.45);opacity:0}
+  100%{transform:scale(1.45);opacity:0}
+}
+#term-overlay{position:fixed;bottom:6.5rem;right:2rem;width:480px;max-width:92vw;background:#0d1b2a;border:1px solid rgba(255,255,255,.08);border-radius:12px;z-index:299;overflow:hidden;display:none;box-shadow:0 24px 48px rgba(0,0,0,.4);font-family:var(--mono)}
 #term-overlay.open{display:block;animation:slideUp .25s ease}
 @keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .term-bar{background:#162032;padding:.65rem 1rem;display:flex;align-items:center;gap:.4rem;border-bottom:1px solid rgba(255,255,255,.06)}
@@ -492,11 +515,15 @@ footer::before{
 </div>
 
 <!-- TERMINAL -->
-<button id="term-btn">&gt;_</button>
+<!-- TERMINAL -->
+<button id="term-btn">
+  <span class="tb-icon">&gt;_</span>
+  <span class="tb-label">TERMINAL</span>
+</button>
 <div id="term-overlay">
   <div class="term-bar"><div class="tdot tdot-r"></div><div class="tdot tdot-y"></div><div class="tdot tdot-g"></div><span class="term-title">aadya@portfolio:~</span></div>
   <div id="term-output">
-    <div class="t-line"><span class="t-gold">Type </span><span class="t-hi">"hi"</span><span class="t-gold"> to get started.</span></div>
+    <div class="t-line"><span class="t-gold">Type </span><span class="t-hi">help</span><span class="t-gold"> to get started.</span></div>
     <div class="t-line"><span class="t-gold">For more details, please contact me through email and i'd be happy to provide you with more information</span></div>
   </div>
   <div id="term-input-row"><span>$</span><input id="term-input" type="text" placeholder="enter command..." autocomplete="off" spellcheck="false"/></div>
@@ -588,29 +615,21 @@ function closePanel(){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel()});
 
 // TERMINAL
-const termBtn=document.getElementById('term-btn');
-const termO=document.getElementById('term-overlay');
-const termOut=document.getElementById('term-output');
-const termIn=document.getElementById('term-input');
+// TERMINAL
+const termBtn=document.getElementById('term-btn'),termO=document.getElementById('term-overlay'),termOut=document.getElementById('term-output'),termIn=document.getElementById('term-input');
 termBtn.addEventListener('click',()=>{termO.classList.toggle('open');if(termO.classList.contains('open'))termIn.focus()});
 
 const CMDS={
   help:()=>['<span class="t-gold">Commands:</span>','<span class="t-hi">whoami</span>  · who is Aadya?','<span class="t-hi">ls</span>      · list all projects','<span class="t-hi">skills</span>  · print tech stack','<span class="t-hi">work</span>    · work history','<span class="t-hi">contact</span> · get in touch','<span class="t-hi">clear</span>   · clear terminal','<span class="t-gold">For more details, please contact me through email and i\'d be happy to provide you with more information</span>'],
   whoami:()=>['<span class="t-hi">Aadya Anil Kumar</span>','<span class="t-gold">MSc Data Science @ TU Wien, Vienna 🇦🇹</span>','<span class="t-gold">Data Engineer @ Springer Capital (Apr–Jul 2026)</span>','<span class="t-gold">Ex SAP Basis Engineer @ Accenture (50+ clients)</span>','<span class="t-hi">Status: open to opportunities 🟢</span>'],
-  ls:()=>['<span class="t-gold">fraud-detection-pipeline</span>  <span class="t-hi">[Python, Docker, Vercel]</span>','<span class="t-gold">codeguard</span>                 <span class="t-hi">[GitHub Actions, SonarCloud] 🏆 QF</span>','<span class="t-gold">sap-log-anomaly</span>           <span class="t-hi">[Isolation Forest, scikit-learn]</span>'],
+  ls:()=>['<span class="t-gold">fraud-detection-pipeline</span>  <span class="t-hi">[Python, Docker, Vercel]</span>','<span class="t-gold">codeguard</span>                 <span class="t-hi">[GitHub Actions, SonarCloud] 🏆 QF</span>','<span class="t-gold">sap-log-anomaly</span>           <span class="t-hi">[Isolation Forest, scikit-learn]</span>','<span class="t-gold">inTrainer</span>                 <span class="t-hi">[Whisper, CNN-LSTM, Xception]</span>','<span class="t-gold">genai-sagemaker</span>           <span class="t-hi">[AWS SageMaker, PyTorch]</span>'],
   skills:()=>['<span class="t-gold">Languages:</span>   <span class="t-hi">Python, SQL, JavaScript</span>','<span class="t-gold">ML/AI:</span>       <span class="t-hi">scikit-learn, TensorFlow, Pandas, NumPy</span>','<span class="t-gold">MLOps:</span>       <span class="t-hi">Airflow, dbt, Docker, GitHub Actions</span>','<span class="t-gold">Data Infra:</span>  <span class="t-hi">PostgreSQL, ClickHouse, NiFi, MinIO</span>','<span class="t-gold">Cloud:</span>       <span class="t-hi">AWS SageMaker, GCP, Azure AI</span>'],
   work:()=>['<span class="t-hi">Springer Capital</span>  Data Engineer · Apr–Jul 2026','  → Airflow, dbt, ClickHouse, Medallion ELT','<span class="t-hi">Human Initials</span>    Data Analyst · Mar–Apr 2026','  → Python, SQL, Excel analytics','<span class="t-hi">Accenture</span>         SAP Basis Engineer · 2023–2025','  → 50+ clients · 100+ incidents · -20% response time'],
   contact:()=>['<span class="t-gold">✉</span>  <span class="t-hi">off.aadyaanil@gmail.com</span>','<span class="t-gold">in</span> <span class="t-hi">linkedin.com/in/aadyaanilkumar</span>','<span class="t-gold">gh</span> <span class="t-hi">github.com/Aadya-Anil</span>','<span class="t-gold">📍</span> <span class="t-hi">Vienna, Austria</span>'],
   clear:()=>'CLEAR'
 };
 
-function addLine(h){
-  const d=document.createElement('div');
-  d.className='t-line';
-  d.innerHTML=h;
-  termOut.appendChild(d);
-  termOut.scrollTop=termOut.scrollHeight;
-}
+function addLine(h){const d=document.createElement('div');d.className='t-line';d.innerHTML=h;termOut.appendChild(d);termOut.scrollTop=termOut.scrollHeight}
 
 termIn.addEventListener('keydown',e=>{
   if(e.key!=='Enter')return;
@@ -621,7 +640,7 @@ termIn.addEventListener('keydown',e=>{
     const r=CMDS[c]();
     if(r==='CLEAR'){termOut.innerHTML='';return}
     r.forEach(l=>addLine(l));
-  } else if(c!==''){
+  }else if(c!==''){
     addLine(`<span class="t-err">not found: ${c} — try <span class="t-hi">help</span></span>`);
   }
 });
